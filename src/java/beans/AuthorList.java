@@ -1,6 +1,7 @@
 
-package functional;
+package beans;
 
+import db.Database;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,11 +10,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BookList {
+public class AuthorList {
     
-    private ArrayList<Book> bookList = new ArrayList<Book>();
+    private ArrayList<Author> authorList = new ArrayList<Author>();
 
-    private ArrayList<Book> getBooks() {
+    private ArrayList<Author> getAuthors() {
         Statement stmt = null;
         ResultSet rs = null;
         Connection conn = null;
@@ -21,15 +22,12 @@ public class BookList {
             conn = Database.getConnection();
 
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("select * from book order by name");
+            rs = stmt.executeQuery("select * from author order by ns");
             while (rs.next()) {
-                Book book = new Book();
-                book.setName(rs.getString("name"));
-                book.setGenre(rs.getString("genre"));
-                book.setIsbn(rs.getString("isbn"));
-                book.setPageCount(rs.getInt("page_count"));
-                book.setPublishDate(rs.getDate("publish_date"));
-                bookList.add(book);
+                Author author = new Author();
+                author.setName(rs.getString("ns"));
+                author.setId((int) rs.getLong("id"));
+                authorList.add(author);
             }
 
         } catch (SQLException ex) {
@@ -44,14 +42,14 @@ public class BookList {
             }
         }
 
-        return bookList;
+        return authorList;
     }
 
-    public ArrayList<Book> getBookList() {
-        if (!bookList.isEmpty()) {
-            return bookList;
+    public ArrayList<Author> getAuthorList() {
+        if (!authorList.isEmpty()) {
+            return authorList;
         } else {
-            return getBooks();
+            return getAuthors();
         }
     }
     

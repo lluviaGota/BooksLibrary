@@ -1,15 +1,15 @@
 
-package functional;
+package beans;
 
-public class Genre {
+public class Author {
 
     private String name;
     private int id;
     
-    public Genre() {
+    public Author() {
     }
     
-    public Genre (String name) {
+    public Author(String name) {
         this.name = name;
     }
 
@@ -31,4 +31,3 @@ public class Genre {
     
     
 }
-

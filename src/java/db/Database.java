@@ -1,6 +1,7 @@
 
-package functional;
+package db;
 
+import beans.AuthorList;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -9,7 +10,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-class Database {
+public class Database {
     private static Connection conn;
     private static InitialContext ic;
     private static DataSource ds;

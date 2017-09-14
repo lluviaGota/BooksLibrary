@@ -1,6 +1,6 @@
+package beans;
 
-package functional;
-
+import db.Database;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -9,11 +9,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AuthorList {
+public class GenreList {
     
-    private ArrayList<Author> authorList = new ArrayList<Author>();
+    private ArrayList<Genre> genreList = new ArrayList<Genre>();
 
-    private ArrayList<Author> getAuthors() {
+    private ArrayList<Genre> getGenres() {
         Statement stmt = null;
         ResultSet rs = null;
         Connection conn = null;
@@ -21,11 +21,12 @@ public class AuthorList {
             conn = Database.getConnection();
 
             stmt = conn.createStatement();
-            rs = stmt.executeQuery("select * from author order by ns");
+            rs = stmt.executeQuery("select * from genre order by name");
             while (rs.next()) {
-                Author author = new Author();
-                author.setName(rs.getString("ns"));
-                authorList.add(author);
+                Genre genre = new Genre();
+                genre.setName(rs.getString("name"));
+                genre.setId((int) rs.getLong("id"));
+                genreList.add(genre);
             }
 
         } catch (SQLException ex) {
@@ -40,15 +41,16 @@ public class AuthorList {
             }
         }
 
-        return authorList;
+        return genreList;
     }
 
-    public ArrayList<Author> getAuthorList() {
-        if (!authorList.isEmpty()) {
-            return authorList;
+    public ArrayList<Genre> getGenreList() {
+        if (!genreList.isEmpty()) {
+            return genreList;
         } else {
-            return getAuthors();
+            return getGenres();
         }
     }
     
 }
+

@@ -1,7 +1,6 @@
 
-package functional;
+package beans;
 
-import java.awt.Image;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +14,7 @@ public class Book implements Serializable{
     private String author;
     private Date publishDate;
     private String publisher;
-    private Image image;
+    private byte[] image;
     private int id;
 
     public String getName() {
@@ -82,11 +81,11 @@ public class Book implements Serializable{
         this.publisher = publisher;
     }
 
-    public Image getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
