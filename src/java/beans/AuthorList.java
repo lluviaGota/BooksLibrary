@@ -26,7 +26,7 @@ public class AuthorList {
             while (rs.next()) {
                 Author author = new Author();
                 author.setName(rs.getString("ns"));
-                author.setId((int) rs.getLong("id"));
+                author.setId(rs.getLong("id"));
                 authorList.add(author);
             }
 

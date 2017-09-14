@@ -4,7 +4,7 @@ package beans;
 public class Genre {
 
     private String name;
-    private int id;
+    private long id;
     
     public Genre() {
     }
@@ -21,11 +21,11 @@ public class Genre {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     

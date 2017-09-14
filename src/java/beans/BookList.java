@@ -25,7 +25,7 @@ public class BookList {
             rs = stmt.executeQuery("select * from book order by name");
             while (rs.next()) {
                 Book book = new Book();
-                book.setId((int) rs.getLong("id"));
+                book.setId(rs.getLong("id"));
                 book.setName(rs.getString("name"));
                 book.setGenre(rs.getString("genre"));
                 book.setIsbn(rs.getString("isbn"));

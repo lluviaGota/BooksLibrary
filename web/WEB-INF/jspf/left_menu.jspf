@@ -6,13 +6,13 @@
                 <h4>Genres:</h4>
                 <ul class="nav">
                     <jsp:useBean id="genreList" class="beans.GenreList" scope="application"/>
-                    <c:forEach var="genre" items="${genreList.getGenreList()}">
-                        <li><a href="#">${genre.name}</a></li>
-                    </c:forEach>
+                    <%
+                        for (Genre genre: genreList.getGenreList()){
+                    %>
+                        <li><a href="books.jsp?genre_id=<%=genre.getId()%>&name=<%=genre.getName()%>"><%=genre.getName()%></a></li>
+                    <%}%>
                 </ul>
                 <p>&nbsp;</p>
             </div>
             <div class="content">
-                <h1>&nbsp;</h1>
-                <p>&nbsp;</p>
-            </div>
+        </div>
